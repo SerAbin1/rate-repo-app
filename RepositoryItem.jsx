@@ -7,6 +7,10 @@ const formatCount = (count) => {
 const RepositoryItem = ({ item }) => {
   return (
     <View>
+      <Image
+        source={{ uri: item.ownerAvatarUrl }}
+        style={{ width: 50, height: 50 }}
+      ></Image>
       <Text>Full name: {item.fullName}</Text>
       <Text>Description: {item.description}</Text>
       <Text>Language: {item.language}</Text>
