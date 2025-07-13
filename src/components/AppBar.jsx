@@ -3,6 +3,7 @@ import Constants from "expo-constants"
 import Text from "./Text"
 import theme from "../theme"
 import { Link } from "react-router-native"
+import { ScrollView } from "react-native"
 
 const styles = StyleSheet.create({
   container: {
@@ -18,16 +19,18 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Link to="/">
-        <Text fontWeight={"bold"} style={styles.container}>
-          Repositories
-        </Text>
-      </Link>
-      <Link to="/sign-in">
-        <Text fontWeight={"bold"} style={styles.container}>
-          Sign In
-        </Text>
-      </Link>
+      <ScrollView horizontal={true}>
+        <Link to="/">
+          <Text fontWeight={"bold"} style={styles.container}>
+            Repositories
+          </Text>
+        </Link>
+        <Link to="/sign-in">
+          <Text fontWeight={"bold"} style={styles.container}>
+            Sign In
+          </Text>
+        </Link>
+      </ScrollView>
     </View>
   )
 }
