@@ -6,20 +6,19 @@ import theme from "../theme"
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    paddingBottom: 15,
+    paddingBottom: 10,
+    paddingLeft: 10,
     backgroundColor: theme.colors.heading,
     flexDirection: "row",
+    color: "#ffffff",
   },
-  text: {
-    color: '#ffffff'
-  }
 })
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
       <Pressable>
-        <Text fontWeight={"bold"} style={styles.text}>
+        <Text fontWeight={"bold"} style={styles.container}>
           Repositories
         </Text>
       </Pressable>
