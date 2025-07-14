@@ -1,8 +1,14 @@
 import { TextInput, View, Pressable, StyleSheet } from "react-native"
 import { useFormik } from "formik"
+import * as yup from "yup"
 
 import Text from "./Text"
 import theme from "../theme"
+
+const validationSchema = yup.object().shape({
+  username: yup.string().required("username is required"),
+  password: yup.string().required("password is required"),
+})
 
 const initialValues = {
   username: "",
@@ -16,6 +22,7 @@ const onSubmit = (values) => {
 const SignIn = () => {
   const formik = useFormik({
     initialValues,
+    validationSchema,
     onSubmit,
   })
 
@@ -27,6 +34,11 @@ const SignIn = () => {
         onChangeText={formik.handleChange("username")}
         style={styles.input}
       />
+      {formik.touched.username && formik.errors.username && (
+        <Text style={{ color: theme.colors.errRed }}>
+          {formik.errors.username}
+        </Text>
+      )}
       <TextInput
         placeholder="password"
         value={formik.values.password}
@@ -34,8 +46,13 @@ const SignIn = () => {
         secureTextEntry
         style={styles.input}
       />
+      {formik.touched.password && formik.errors.password && (
+        <Text style={{ color: theme.colors.errRed }}>
+          {formik.errors.password}
+        </Text>
+      )}
       <Pressable onPress={formik.handleSubmit} style={styles.button}>
-        <Text fontWeight={"bold"} style={styles.buttonText}>
+        <Text fontWeight={"bold"} style={{ color: "white" }}>
           Submit
         </Text>
       </Pressable>
@@ -62,9 +79,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: "blue",
     alignItems: "center",
-  },
-  buttonText: {
-    color: "white",
   },
 })
 
