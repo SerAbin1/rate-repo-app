@@ -1,6 +1,6 @@
 import { View, Image, StyleSheet } from "react-native"
-import Text from "./src/components/Text"
-import theme from "./src/theme"
+import Text from "./Text"
+import theme from "../theme"
 
 const formatCount = (count) => {
   return count >= 1000 ? `${(count / 1000).toFixed(1)}k` : `${count}`
