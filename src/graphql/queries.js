@@ -27,3 +27,12 @@ export const AUTHENTICATE = gql`
     }
   }
 `
+
+export const AUTH_STATUS = gql`
+  {
+    me {
+      id
+      username
+    }
+  }
+`
